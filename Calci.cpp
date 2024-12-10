@@ -69,16 +69,16 @@ LRESULT WindowHan(HWND   h, UINT msg, WPARAM wparam, LPARAM lparam) {
 		button6 = CreateWindow(L"BUTTON", L"5", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 60, 266, 60, 80, h, reinterpret_cast<HMENU>(100), 0, 0);
 		button7 = CreateWindow(L"BUTTON", L"6", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 120, 266, 60, 80, h, reinterpret_cast<HMENU>(110), 0, 0);
 		button8 = CreateWindow(L"BUTTON", L"7", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 180, 266, 60, 80, h, reinterpret_cast<HMENU>(120), 0, 0);
-		button9 = CreateWindow(L"BUTTON", L"8", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 470, 100, 20, 40, h, reinterpret_cast<HMENU>(130), 0, 0);
-		button10 = CreateWindow(L"BUTTON", L"9", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 500, 100, 20, 40, h, reinterpret_cast<HMENU>(140), 0, 0);
+		button9 = CreateWindow(L"BUTTON", L"8", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 185, 60, 80, h, reinterpret_cast<HMENU>(130), 0, 0);
+		button10 = CreateWindow(L"BUTTON", L"9", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 60, 185, 60, 80, h, reinterpret_cast<HMENU>(140), 0, 0);
 
 
 		button11 = CreateWindow(L"BUTTON", L"=", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 240, 346, 50, 80, h, reinterpret_cast<HMENU>(150), 0, 0);
-		button6 = CreateWindow(L"BUTTON", L"-", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 530, 250, 20, 40, h, reinterpret_cast<HMENU>(160), 0, 0);
-		button7 = CreateWindow(L"BUTTON", L"/", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 530, 200, 20, 40, h, reinterpret_cast<HMENU>(170), 0, 0);
-		button8 = CreateWindow(L"BUTTON", L"*", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 530, 150, 20, 40, h, reinterpret_cast<HMENU>(180), 0, 0);
-		button9 = CreateWindow(L"BUTTON", L"<", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 530, 100, 20, 40, h, reinterpret_cast<HMENU>(190), 0, 0);
-		button10 = CreateWindow(L"BUTTON", L"c", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 530, 50, 20, 40, h, reinterpret_cast<HMENU>(200), 0, 0);
+		button6 = CreateWindow(L"BUTTON", L"-", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 240, 185, 50, 80, h, reinterpret_cast<HMENU>(160), 0, 0);
+		button7 = CreateWindow(L"BUTTON", L"/", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 60, 105, 60, 80, h, reinterpret_cast<HMENU>(170), 0, 0);
+		button8 = CreateWindow(L"BUTTON", L"*", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 0, 105, 60, 80, h, reinterpret_cast<HMENU>(180), 0, 0);
+		button9 = CreateWindow(L"BUTTON", L"<", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 180, 185, 60, 80, h, reinterpret_cast<HMENU>(190), 0, 0);
+		button10 = CreateWindow(L"BUTTON", L"AC", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 120, 185, 60, 80, h, reinterpret_cast<HMENU>(200), 0, 0);
 
 		return 0;
 	case WM_COMMAND:
@@ -276,15 +276,15 @@ LRESULT WindowHan(HWND   h, UINT msg, WPARAM wparam, LPARAM lparam) {
 		return 0;
 	case WM_PAINT:
 	{
-		// Получаем контекст устройства для рисования
+
 		PAINTSTRUCT ps;
 
 		if (x == 1 or x1 == 1 or x2 == 1 or x3 == 1 or x4 == 1 or x5 == 1 or x6 == 1 or x7 == 1 or x == 8 or x9 == 1 or x10 == 1 or x11 == 1 or x12 == 1 or x13 == 1 or x14 == 1 or x15 == 1) {
 			HDC hdc = BeginPaint(h, &ps);
-			SetTextColor(hdc, RGB(28, 28, 28));  // Устанавливаем цвет текста
-			TextOut(hdc, 480, 79, hah, wcslen(hah));  // Выводим текст "0". Указываем длину как 1 символ.
+			SetTextColor(hdc, RGB(28, 28, 28)); 
+			TextOut(hdc, 0, 79, hah, wcslen(hah));  
 
-			EndPaint(h, &ps);  // Завершаем рисование
+			EndPaint(h, &ps);  
 		}
 		return 0;
 	}
@@ -303,8 +303,8 @@ int WINAPI  WinMain(HINSTANCE hinstance, HINSTANCE prevhinstance, LPSTR pcmd, in
 	wc.cbWndExtra = 0;
 	wc.cbClsExtra = 0;
 	wc.hCursor = LoadCursor(0, IDC_ARROW);
-	wc.hIcon = LoadIcon(hinstance, IDI_APPLICATION);
-	wc.hIconSm = LoadIcon(hinstance, IDI_APPLICATION);
+	wc.hIcon = LoadIcon(hinstance, MAKEINTRESOURCE(IDI_ICON1));
+	wc.hIconSm = LoadIcon(hinstance, MAKEINTRESOURCE(IDI_ICON1));
 	wc.lpszClassName = L"MyApp";
 	wc.lpszMenuName = 0;
 	wc.hInstance = hinstance;
@@ -313,7 +313,7 @@ int WINAPI  WinMain(HINSTANCE hinstance, HINSTANCE prevhinstance, LPSTR pcmd, in
 	if (!RegisterClassEx(&wc)) {
 		return EXIT_FAILURE;
 	}
-	hwnd = CreateWindow(wc.lpszClassName, L"калькулятор", WS_OVERLAPPEDWINDOW | WS_VISIBLE, 10, 0, 300, 464, NULL, NULL, wc.hInstance, NULL);
+	hwnd = CreateWindow(wc.lpszClassName, L"Calculator", WS_OVERLAPPEDWINDOW | WS_VISIBLE, 10, 0, 300, 464, NULL, NULL, wc.hInstance, NULL);
 	if (hwnd == INVALID_HANDLE_VALUE) {
 		return 1;
 	}
